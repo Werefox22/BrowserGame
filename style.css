@@ -14,3 +14,14 @@ body {
 * {
 	border: 1px solid var(--old-burgundy);
 }
+
+#box {
+	width: 50%;
+	margin: auto;
+	display: grid;
+}
+
+.grid {
+	width: 100%;
+	padding-bottom: 100%;
+}
