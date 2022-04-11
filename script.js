@@ -4,3 +4,8 @@
 // the game generates clues based on the difficulty
 // the player solves the puzzle using the clues and places the tokens in the correct positions
 // the game checks that all of the tokens are correct
+
+// build the game grid
+function buildGrid(size) {
+
+}

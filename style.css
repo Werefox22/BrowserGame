@@ -6,3 +6,11 @@
 	--old-burgundy: #4f3130ff;
 	--catawba: #753742ff;
 }
+
+body {
+	background-color: var(--lavender-blush);
+}
+
+* {
+	border: 1px solid var(--old-burgundy);
+}
