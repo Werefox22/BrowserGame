@@ -15,9 +15,17 @@ body {
 	border: 1px solid var(--old-burgundy);
 }
 
+main {
+	display: flex;
+	justify-content: space-around;
+}
+
+#tokens {
+	width: 100px;
+}
+
 #box {
 	width: 50%;
-	margin: auto;
 	display: grid;
 }
 

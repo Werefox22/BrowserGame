@@ -9,10 +9,12 @@ function main() {
 
 	// build the game grid
 	function buildGrid(size) {
+		// get the parent grid
 		const gameBox = document.querySelector("#box")
 
 		let gridLines = ""
 
+		// loop x and y, mainly to easily track the coords of a grid item
 		for (let x = 0; x < size; x++) {
 			gridLines += "auto "
 
@@ -27,8 +29,13 @@ function main() {
 			}
 		}
 
+		// set the grid of the parent based of how many lines there are, which is just equal to size
 		gameBox.style.gridTemplateColumns = gridLines
 		gameBox.style.gridTemplateRows = gridLines
 	}
 	buildGrid(2)
+
+	function generatePuzzle(size) {
+
+	}
 }
