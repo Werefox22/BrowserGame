@@ -21,6 +21,7 @@ function main() {
 				let grid = document.createElement("div")
 
 				grid.classList.add("grid")
+				grid.textContent = `Grid (${x}, ${y})`
 
 				gameBox.append(grid)
 			}
