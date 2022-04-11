@@ -38,7 +38,7 @@ function main() {
 	// function for building a list of tokens
 	function getTokenList(size) {
 		// list alphabet to reference in the token names
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+		const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 		let tokens = [ ]
 		for (let x = 0; x < size; x++) {
@@ -55,7 +55,7 @@ function main() {
 
 	// function to build the list of tokens
 	function buildTokens(tokenList) {
-		const tokenHolder = document.querySelector("#tokens")
+		const tokenHolder = document.querySelector("#token-tray")
 		for (let i = 0; i < tokenList.length; i++) {
 			let token = document.createElement("div")
 

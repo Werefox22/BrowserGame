@@ -7,6 +7,9 @@
 	--catawba: #753742ff;
 }
 
+/* * * * * * * * * * * 
+	General
+* * * * * * * * * * */
 body {
 	background-color: var(--lavender-blush);
 	margin: 1em;
@@ -25,6 +28,9 @@ main {
 	width: 50%;
 }
 
+/* * * * * * * * * * * 
+	Puzzle
+* * * * * * * * * * */
 #box {
 	width: 50%;
 	display: grid;
@@ -33,4 +39,19 @@ main {
 .grid {
 	width: 100%;
 	aspect-ratio: 1 / 1;
+}
+
+/* * * * * * * * * * * 
+	Tokens
+* * * * * * * * * * */
+#token-tray {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.token {
+	min-width: 50px;
+	aspect-ratio: 1 / 1;
+	text-align: center;
+	font-size: 2em
 }
