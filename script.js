@@ -51,12 +51,26 @@ function main() {
 		}
 		return tokens
 	}
-	console.log(getTokenList(size))
+	const tokenList = getTokenList(size)
+
+	// function to build the list of tokens
+	function buildTokens(tokenList) {
+		const tokenHolder = document.querySelector("#tokens")
+		for (let i = 0; i < tokenList.length; i++) {
+			let token = document.createElement("div")
+
+			token.classList.add("token")
+			token.textContent = tokenList[i]
+
+			tokenHolder.append(token)
+		}
+	}
+	buildTokens(tokenList)
 
 	// function to build the puzzle layout
 	function buildPuzzle(size) {
 		// get tokens
-		let tokens = shuffle(getTokenList(size))
+		let tokens = shuffle(tokenList)
 
 		let puzzle = [ ]
 		let i = 0
