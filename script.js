@@ -56,7 +56,7 @@ function main() {
 	// function to build the puzzle layout
 	function buildPuzzle(size) {
 		// get tokens
-		let tokens = getTokenList(size)
+		let tokens = shuffle(getTokenList(size))
 
 		let puzzle = [ ]
 		let i = 0
