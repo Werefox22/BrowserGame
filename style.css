@@ -9,6 +9,7 @@
 
 body {
 	background-color: var(--lavender-blush);
+	margin: 1em;
 }
 
 * {
@@ -21,7 +22,7 @@ main {
 }
 
 #tokens {
-	width: 100px;
+	width: 50%;
 }
 
 #box {
