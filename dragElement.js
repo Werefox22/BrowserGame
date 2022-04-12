@@ -1,7 +1,8 @@
 // original script sourced from https://www.w3schools.com/howto/howto_js_draggable.asp
+const dragOffset = [25, 25]
 
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var mouseX = 0, mouseY = 0;
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
@@ -11,9 +12,7 @@ function dragElement(elmnt) {
 	// set the class so the positioning is absolute
 	elmnt.classList.add('dragging')
 
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+	// call a function when the mouse is unpressed:
     document.onmouseup = closeDragElement;
 	
     // call a function whenever the cursor moves:
@@ -25,15 +24,13 @@ function dragElement(elmnt) {
     e.preventDefault();
 
     // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
+    elmnt.style.left = (mouseX - dragOffset[0]) + "px";
+	elmnt.style.top = (mouseY - dragOffset[1]) + "px";
+	}
 
   function closeDragElement() {
     /* stop moving when mouse button is released:*/
