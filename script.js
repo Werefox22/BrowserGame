@@ -39,6 +39,9 @@ function main() {
 	}
 	buildGrid(size)
 
+	const tokenTray = document.querySelector("#token-tray")
+	tokenTray.addEventListener('mouseup', () => moveTokenToGrid(currentSelectedToken, tokenTray))
+
 	// function for building a list of tokens
 	function getTokenList(size) {
 		// list alphabet to reference in the token names
@@ -98,7 +101,7 @@ function main() {
 
 	function moveTokenToGrid(token, grid) {
 		console.log(`Mouseup at (${grid.textContent}) while holding ${token.textContent}`)
-		
+
 		if (token != null) {
 			grid.append(token)
 		}

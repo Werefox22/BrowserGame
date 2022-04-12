@@ -56,6 +56,13 @@ main {
 #token-tray {
 	display: flex;
 	justify-content: space-evenly;
+	min-height: 200px;
+
+	background-color: var(--old-burgundy);
+}
+
+#token-tray:hover {
+	background-color: var(--catawba);
 }
 
 .token {
