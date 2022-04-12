@@ -1,19 +1,19 @@
 // original script sourced from https://www.w3schools.com/howto/howto_js_draggable.asp
 const dragOffset = [10, 10]
 
-function dragElement(elmnt, token) {
+function dragElement(element) {
   	var mouseX = 0, mouseY = 0;
-  	elmnt.onmousedown = dragMouseDown;
+  	element.onmousedown = dragMouseDown;
 
 	function dragMouseDown(e) {
 		e = e || window.event;
 		e.preventDefault();
 
 		// tell the script what token we're holding
-		currentSelectedToken = token
+		currentSelectedToken = element
 
 		// set the class so the positioning is absolute
-		elmnt.classList.add('dragging')
+		element.classList.add('dragging')
 
 		// call a function when the mouse is unpressed:
 		document.onmouseup = closeDragElement;
@@ -31,8 +31,8 @@ function dragElement(elmnt, token) {
 		mouseY = e.clientY;
 
 		// set the element's new position:
-		elmnt.style.left = (mouseX + dragOffset[0]) + "px";
-		elmnt.style.top = (mouseY + dragOffset[1]) + "px";
+		element.style.left = (mouseX + dragOffset[0]) + "px";
+		element.style.top = (mouseY + dragOffset[1]) + "px";
 	}
 	
 	function closeDragElement() {
@@ -44,6 +44,6 @@ function dragElement(elmnt, token) {
 		currentSelectedToken = null
 
 		// remove absolute positioning
-		elmnt.classList.remove('dragging')
+		element.classList.remove('dragging')
   	}
 }

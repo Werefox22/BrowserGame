@@ -27,9 +27,7 @@ function main() {
 				grid.classList.add("grid")
 				grid.textContent = `Grid (${x}, ${y})`
 
-				grid.addEventListener('mouseup', () => {
-					console.log(`Mouseup at (${x},${y}) while holding ${currentSelectedToken}`)
-				})
+				grid.addEventListener('mouseup', () => moveTokenToGrid(currentSelectedToken, grid))
 
 				gameBox.append(grid)
 			}
@@ -68,7 +66,7 @@ function main() {
 
 			token.classList.add("token")
 			token.textContent = tokenList[i]
-			dragElement(token, tokenList[i])
+			dragElement(token)
 
 			tokenHolder.append(token)
 		}
@@ -97,6 +95,14 @@ function main() {
 	}
 
 	console.log(buildPuzzle(size))
+
+	function moveTokenToGrid(token, grid) {
+		console.log(`Mouseup at (${grid.textContent}) while holding ${token.textContent}`)
+		
+		if (token != null) {
+			grid.append(token)
+		}
+	}
 }
 
 // shuffle function sourced from https://bost.ocks.org/mike/shuffle/
