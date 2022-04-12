@@ -42,6 +42,12 @@ main {
 .grid {
 	width: 100%;
 	aspect-ratio: 1 / 1;
+
+	background-color: var(--dark-sea-green);
+}
+
+.grid:hover {
+	background-color: var(--celadon);
 }
 
 /* * * * * * * * * * * 
@@ -53,10 +59,16 @@ main {
 }
 
 .token {
-	min-width: 50px;
+	min-width: 100px;
 	aspect-ratio: 1 / 1;
+
+	background-color: var(--dark-sea-green);
 	text-align: center;
 	font-size: 2em
+}
+
+.token:hover {
+	background-color: var(--celadon);
 }
 
 /* * * * * * * * * * * 
