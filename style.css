@@ -32,15 +32,6 @@ main {
 }
 
 /* * * * * * * * * * * 
-	Mouse Tracking
-* * * * * * * * * * */
-.mover {
-	position: absolute;
-	left: var(--mouse-x);
-	top: var(--mouse-y);
-}
-
-/* * * * * * * * * * * 
 	Puzzle
 * * * * * * * * * * */
 #box {

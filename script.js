@@ -6,13 +6,6 @@
 // the game checks that all of the tokens are correct
 
 function main() {
-	// track the mouse position and send it to the css fild
-	let root = document.documentElement
-	root.addEventListener("mousemove", e => {
-		root.style.setProperty('--mouse-x', e.clientX + 'px')
-		root.style.setProperty('--mouse-y', e.clientY + 'px')
-	})
-
 	const size = 3
 	// build the game grid
 	function buildGrid(size) {
@@ -32,6 +25,10 @@ function main() {
 				grid.classList.add("grid")
 				grid.textContent = `Grid (${x}, ${y})`
 
+				grid.addEventListener('mouseup', e => {
+					console.log(`Mouseup at (${x},${y})`)
+				})
+
 				gameBox.append(grid)
 			}
 		}
@@ -41,7 +38,7 @@ function main() {
 		gameBox.style.gridTemplateRows = gridLines
 	}
 	buildGrid(size)
-
+	
 	// function for building a list of tokens
 	function getTokenList(size) {
 		// list alphabet to reference in the token names
