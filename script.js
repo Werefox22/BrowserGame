@@ -5,6 +5,8 @@
 // the player solves the puzzle using the clues and places the tokens in the correct positions
 // the game checks that all of the tokens are correct
 
+var currentSelectedToken = null
+
 function main() {
 	const size = 3
 	// build the game grid
@@ -25,8 +27,8 @@ function main() {
 				grid.classList.add("grid")
 				grid.textContent = `Grid (${x}, ${y})`
 
-				grid.addEventListener('mouseup', e => {
-					console.log(`Mouseup at (${x},${y})`)
+				grid.addEventListener('mouseup', () => {
+					console.log(`Mouseup at (${x},${y}) while holding ${currentSelectedToken}`)
 				})
 
 				gameBox.append(grid)
@@ -57,15 +59,16 @@ function main() {
 	}
 	const tokenList = getTokenList(size)
 
-	// function to build the list of tokens
+	// function to build the tray of tokens
 	function buildTokens(tokenList) {
 		const tokenHolder = document.querySelector("#token-tray")
+
 		for (let i = 0; i < tokenList.length; i++) {
 			let token = document.createElement("div")
 
 			token.classList.add("token")
 			token.textContent = tokenList[i]
-			dragElement(token)
+			dragElement(token, tokenList[i])
 
 			tokenHolder.append(token)
 		}
