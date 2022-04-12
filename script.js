@@ -6,6 +6,13 @@
 // the game checks that all of the tokens are correct
 
 function main() {
+	// track the mouse position and send it to the css fild
+	let root = document.documentElement
+	root.addEventListener("mousemove", e => {
+		root.style.setProperty('--mouse-x', e.clientX + 'px')
+		root.style.setProperty('--mouse-y', e.clientY + 'px')
+	})
+
 	const size = 3
 	// build the game grid
 	function buildGrid(size) {

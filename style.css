@@ -5,6 +5,9 @@
 	--lavender-blush: #f9e7e7ff;
 	--old-burgundy: #4f3130ff;
 	--catawba: #753742ff;
+
+	--mouse-x: 0px;
+	--mouse-y: 0px
 }
 
 /* * * * * * * * * * * 
@@ -26,6 +29,15 @@ main {
 
 #clues {
 	width: 50%;
+}
+
+/* * * * * * * * * * * 
+	Mouse Tracking
+* * * * * * * * * * */
+.mover {
+	position: absolute;
+	left: var(--mouse-x);
+	top: var(--mouse-y);
 }
 
 /* * * * * * * * * * * 
