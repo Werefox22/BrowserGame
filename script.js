@@ -69,6 +69,14 @@ function main() {
 			token.classList.add("token")
 			token.textContent = tokenList[i]
 
+			token.addEventListener('mousedown', e => {
+				e.target.classList.add('mover')
+			})
+
+			token.addEventListener('mouseup', e => {
+				e.target.classList.remove('mover')
+			})
+
 			tokenHolder.append(token)
 		}
 	}
