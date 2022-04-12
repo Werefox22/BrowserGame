@@ -38,7 +38,7 @@ function main() {
 		gameBox.style.gridTemplateRows = gridLines
 	}
 	buildGrid(size)
-	
+
 	// function for building a list of tokens
 	function getTokenList(size) {
 		// list alphabet to reference in the token names
@@ -65,14 +65,7 @@ function main() {
 
 			token.classList.add("token")
 			token.textContent = tokenList[i]
-
-			token.addEventListener('mousedown', e => {
-				e.target.classList.add('mover')
-			})
-
-			token.addEventListener('mouseup', e => {
-				e.target.classList.remove('mover')
-			})
+			dragElement(token)
 
 			tokenHolder.append(token)
 		}
