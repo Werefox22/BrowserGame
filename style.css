@@ -58,6 +58,8 @@ main {
 #token-tray {
 	display: flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
+
 	min-height: 100px;
 	padding: 25px;
 
