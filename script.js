@@ -10,7 +10,7 @@ var currentSelectedToken = null
 function main() {
 
 	const size = Number.parseInt(window.prompt("Grid size?"))
-	const clueCount = NUmber.parseInt(window.prompt("Clue count?"))
+	const clueCount = Number.parseInt(window.prompt("Clue count?"))
 	const gridSquares = []
 	// build the game grid
 	function buildGrid(size) {

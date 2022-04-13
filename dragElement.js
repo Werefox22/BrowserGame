@@ -20,6 +20,9 @@ function dragElement(element) {
 		
 		// call a function whenever the cursor moves:
 		document.onmousemove = elementDrag;
+
+		// call it to update the position immediately
+		elementDrag(e)
 	}
 
   	function elementDrag(e) {
