@@ -100,9 +100,12 @@ function main() {
 
 	// function to handle token movement
 	function moveTokenToGrid(token, grid) {
+
 		// if there's a token to move
-		if (token != null) {
+
+		if (token != null && (!grid.classList.contains("grid") || grid.childNodes.length === 0)) {
 			grid.append(token)
+			grid.classList.add("full")
 		}
 	}
 }

@@ -31,13 +31,15 @@ main {
 	Puzzle
 * * * * * * * * * * */
 #box {
-	width: 50%;
+	/* width: 650px; */
+	aspect-ratio: 1/1;
 	display: grid;
 	border: 1px solid var(--old-burgundy);
 }
 
 .grid {
 	width: 200px;
+	margin: auto;
 	aspect-ratio: 1 / 1;
 	border: 1px solid var(--old-burgundy);
 
@@ -54,6 +56,7 @@ main {
 #token-tray {
 	display: flex;
 	justify-content: space-evenly;
+	min-height: 100px;
 	padding: 25px;
 
 	background-color: var(--old-burgundy);
