@@ -9,6 +9,7 @@ var currentSelectedToken = null
 
 function main() {
 	const size = 3
+	const gridSquares = []
 	// build the game grid
 	function buildGrid(size) {
 		// get the parent grid
@@ -29,6 +30,7 @@ function main() {
 				grid.addEventListener('mouseup', () => moveTokenToGrid(currentSelectedToken, grid))
 
 				gameBox.append(grid)
+				gridSquares.push(grid)
 			}
 		}
 
@@ -95,18 +97,46 @@ function main() {
 
 		return puzzle
 	}
-
-	console.log(buildPuzzle(size))
+	const puzzle = buildPuzzle(size)
+	console.log(puzzle)
 
 	// function to handle token movement
 	function moveTokenToGrid(token, grid) {
-
-		// if there's a token to move
-
+		// if there's a token to move AND it's either not a grid (it's the token tray) OR it's empty
 		if (token != null && (!grid.classList.contains("grid") || grid.childNodes.length === 0)) {
 			grid.append(token)
-			grid.classList.add("full")
+			checkWinCondtion()
 		}
+	}
+
+	// function that checks if the game has won
+	function checkWinCondtion() {
+
+		// check how many squares are occupied
+		let i = 0
+
+		for (let x = 0; x < size; x++) {
+
+			for (let y = 0; y < size; y++) {
+				// if the square has something
+				if (gridSquares[i].childNodes.length > 0) {
+					// compare it to the solution
+					if (gridSquares[i].childNodes[0].textContent === puzzle[x][y]) {
+						// it's correct
+					} else {
+						// incorrect square
+						return false
+					}
+				} else {
+					// if the square is empty
+					return false
+				}
+
+				i++
+			}
+		}
+
+		console.log("You win!")
 	}
 }
 
