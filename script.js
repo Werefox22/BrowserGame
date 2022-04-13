@@ -25,7 +25,6 @@ function main() {
 				let grid = document.createElement("div")
 
 				grid.classList.add("grid")
-				grid.textContent = `Grid (${x}, ${y})`
 
 				grid.addEventListener('mouseup', () => moveTokenToGrid(currentSelectedToken, grid))
 
@@ -99,9 +98,9 @@ function main() {
 
 	console.log(buildPuzzle(size))
 
+	// function to handle token movement
 	function moveTokenToGrid(token, grid) {
-		console.log(`Mouseup at (${grid.textContent}) while holding ${token.textContent}`)
-
+		// if there's a token to move
 		if (token != null) {
 			grid.append(token)
 		}
