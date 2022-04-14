@@ -12,6 +12,7 @@ function main() {
 	const size = Number.parseInt(window.prompt("Grid size?"))
 	const clueCount = Number.parseInt(window.prompt("Clue count?"))
 	const gridSquares = []
+
 	// build the game grid
 	function buildGrid(size) {
 		// get the parent grid
@@ -80,7 +81,7 @@ function main() {
 	buildTokens(tokenList)
 
 	// function to build the puzzle layout
-	function buildPuzzle(size) {
+	function generatePuzzle(size) {
 		// get tokens
 		let tokens = shuffle(tokenList)
 
@@ -99,8 +100,35 @@ function main() {
 
 		return puzzle
 	}
-	const puzzle = buildPuzzle(size)
+	const puzzle = generatePuzzle(size)
 	console.log(puzzle)
+
+	// function to generate clues
+	function generateClues() {
+		return [ [ "A1", "A2" ], [ "B1", "B2" ] ]
+	}
+
+	// function to make the clues on the webpage
+	function buildClue(clue) {
+		let clueElement = document.createElement("div")
+
+		clueElement.classList.add("clue")
+
+		for (let x = 0; x < clue.length; x++) {
+			for (let y = 0; y < clue[x].length; y++) {
+				let token = document.createElement("div")
+				
+				token.classList.add("clueToken")
+				token.textContent = clue[x][y]
+
+				clueElement.append(token)
+			}
+		}
+
+		document.querySelector("#clues").append(clueElement)
+	}
+
+	buildClue(generateClues())
 
 	// function to handle token movement
 	function moveTokenToGrid(token, grid) {

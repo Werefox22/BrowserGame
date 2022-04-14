@@ -53,6 +53,24 @@ main {
 }
 
 /* * * * * * * * * * * 
+	Clues
+* * * * * * * * * * */
+#clues {
+	border: 1px solid var(--old-burgundy);
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.clue {
+	display: grid;
+}
+
+.clueToken {
+	width: 50px;
+
+}
+
+/* * * * * * * * * * * 
 	Tokens
 * * * * * * * * * * */
 #token-tray {
