@@ -78,10 +78,10 @@ function main() {
 			tokenHolder.append(token)
 		}
 	}
-	
+
 	buildTokens(tokenList)
 
-	const puzzle = generatePuzzle(size)
+	const puzzle = generatePuzzle(size, tokenList)
 	console.log(puzzle)
 	
 	// function to make the clues on the webpage
@@ -112,7 +112,7 @@ function main() {
 		document.querySelector("#clues").append(clueElement)
 	}
 
-	buildClue(generateClues())
+	buildClue(generateClues(puzzle))
 
 	// function to handle token movement
 	function moveTokenToGrid(token, grid) {

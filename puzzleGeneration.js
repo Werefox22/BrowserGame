@@ -1,5 +1,5 @@
 // function to build the puzzle layout
-function generatePuzzle(size) {
+function generatePuzzle(size, tokenList) {
 	// get tokens
 	let tokens = shuffle(tokenList)
 
@@ -20,6 +20,6 @@ function generatePuzzle(size) {
 }
 
 // function to generate clues
-function generateClues() {
+function generateClues(puzzle) {
 	return puzzle
 }
