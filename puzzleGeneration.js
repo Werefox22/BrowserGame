@@ -23,15 +23,46 @@ function generatePuzzle(size, tokenList) {
 // returns an array of clues
 // difficulty should be a positive integer, the lower the easier
 function generateClues(puzzle, difficulty) {
+
 	let clueArray = []
+	
+	// fill the array with  clues
+	for (let i = 0; i < difficulty + 1; i++) {
+		// make a new clue every time to avoid using the same clue multiple times
+		let emptyClue = []
+		for (let x = 0; x < puzzle.length; x++) {
+			let row = []
+			for (let y = 0; y < puzzle.length; y++) {
+				row.push('')
+			}
+			emptyClue.push(row)
+		}
+	
+		clueArray.push(emptyClue)
+	}
 
-	let clue = puzzle
-	let rngX = Math.floor(Math.random() * puzzle.length)
-	let rngY = Math.floor(Math.random() * puzzle.length)
+	// get a random list of the tokens
+	let tokens = []
+	for (x = 0; x < puzzle.length; x++) {
+		for (y = 0; y < puzzle.length; y++) {
+			tokens.push([x, y])
+		}
+	}
+	tokens = shuffle(tokens)
+	// iterate through the tokens, skipping the first one to ensure exactly 1 unsolved square
+	for (let i = 1; i < tokens.length; i++) {
+		let x = tokens[i][0]
+		let y = tokens[i][1]
 
-	clue[rngX][rngY] = ""
+		// pick 2 random clues
+		let clue1 = clueArray[Math.floor(Math.random() * clueArray.length)]
+		let clue2 = clueArray[Math.floor(Math.random() * clueArray.length)]
 
-	clueArray.push(clue)
+		// add the solution to the 2 clues
+		let solution = puzzle[x][y]
+		clue1[x][y] = solution[0] + clue1[x][y]
+		clue2[x][y] = clue2[x][y] + solution[1] + ""
+	}
 
 	isSolvable(clueArray, puzzle)
 	return clueArray
