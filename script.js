@@ -10,7 +10,7 @@ var currentSelectedToken = null
 function main() {
 
 	const size = Number.parseInt(window.prompt("Grid size?"))
-	const clueCount = Number.parseInt(window.prompt("Clue count?"))
+	// const clueCount = Number.parseInt(window.prompt("Clue count?"))
 	const gridSquares = []
 
 	// build the game grid
@@ -78,36 +78,12 @@ function main() {
 			tokenHolder.append(token)
 		}
 	}
+	
 	buildTokens(tokenList)
 
-	// function to build the puzzle layout
-	function generatePuzzle(size) {
-		// get tokens
-		let tokens = shuffle(tokenList)
-
-		let puzzle = [ ]
-		let i = 0
-		for (let x = 0; x < size; x++) {
-			let row = [ ]
-
-			for (let y = 0; y < size; y++) {
-				row.push(tokens[i])
-				i++
-			}
-
-			puzzle.push(row)
-		}
-
-		return puzzle
-	}
 	const puzzle = generatePuzzle(size)
 	console.log(puzzle)
-
-	// function to generate clues
-	function generateClues() {
-		return [ [ "A1", "A2" ], [ "B1", "B2" ] ]
-	}
-
+	
 	// function to make the clues on the webpage
 	function buildClue(clue) {
 		let clueElement = document.createElement("div")
@@ -174,7 +150,7 @@ function main() {
 			}
 		}
 
-		console.log("You win!")
+		window.alert("You win!")
 	}
 }
 

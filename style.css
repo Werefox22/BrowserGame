@@ -63,12 +63,11 @@ main {
 
 .clue {
 	flex-shrink: 1;
-	height: 200px;
+	/* height: 200px; */
 	margin: auto;
 
 	display: grid;
 	aspect-ratio: 1 / 1;
-	border: 1px solid var(--old-burgundy);
 }
 
 .clueToken {
