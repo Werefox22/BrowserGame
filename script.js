@@ -6,6 +6,7 @@
 // the game checks that all of the tokens are correct
 
 var currentSelectedToken = null
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function main() {
 
@@ -49,7 +50,7 @@ function main() {
 	// function for building a list of tokens
 	function getTokenList(size) {
 		// list alphabet to reference in the token names
-		const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		// const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 		let tokens = [ ]
 		for (let x = 0; x < size; x++) {
@@ -112,7 +113,10 @@ function main() {
 		document.querySelector("#clues").append(clueElement)
 	}
 
-	buildClue(generateClues(puzzle))
+	let clues = generateClues(puzzle, 2)
+	for (let i = 0; i < clues.length; i++) {
+		buildClue(clues[i])
+	}
 
 	// function to handle token movement
 	function moveTokenToGrid(token, grid) {
