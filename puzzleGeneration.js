@@ -49,14 +49,37 @@ function generateClues(puzzle, difficulty) {
 		}
 	}
 	tokens = shuffle(tokens)
+
 	// iterate through the tokens, skipping the first one to ensure exactly 1 unsolved square
 	for (let i = 1; i < tokens.length; i++) {
 		let x = tokens[i][0]
 		let y = tokens[i][1]
 
-		// pick 2 random clues
-		let clue1 = clueArray[Math.floor(Math.random() * clueArray.length)]
-		let clue2 = clueArray[Math.floor(Math.random() * clueArray.length)]
+		let clue1
+		let clue2
+
+		// if there are at least 3 clues
+		if (clueArray.length > 2) {
+			// pick 2 nonrepeating numbers
+			let num1 = Math.floor(Math.random() * clueArray.length)
+			let num2 = Math.floor(Math.random() * clueArray.length)
+			
+			if (num1 === num2) {
+				num2++
+				if (num2 >= clueArray.length) {
+					num2 -= 2
+				}
+			}
+
+			clue1 = clueArray[num1]
+			clue2 = clueArray[num2]
+
+		} else {
+			// pick from the 2 clues randomly
+			// or if there's 1 clue pick it twice
+			clue1 = clueArray[Math.floor(Math.random() * clueArray.length)]
+			clue2 = clueArray[Math.floor(Math.random() * clueArray.length)]
+		}
 
 		// add the solution to the 2 clues
 		let solution = puzzle[x][y]
