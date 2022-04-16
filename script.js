@@ -114,7 +114,11 @@ function main() {
 
 		clueElement.classList.add("clue")
 
+		let gridLines = ""
+
 		for (let x = 0; x < clue.length; x++) {
+			gridLines += "auto "
+
 			for (let y = 0; y < clue[x].length; y++) {
 				let token = document.createElement("div")
 				
@@ -124,6 +128,10 @@ function main() {
 				clueElement.append(token)
 			}
 		}
+
+		// set the grid of the parent based of how many lines there are, which is just equal to size
+		clueElement.style.gridTemplateColumns = gridLines
+		clueElement.style.gridTemplateRows = gridLines		
 
 		document.querySelector("#clues").append(clueElement)
 	}
