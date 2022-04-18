@@ -41,6 +41,9 @@ function main() {
 		// set the grid of the parent based of how many lines there are, which is just equal to size
 		gameBox.style.gridTemplateColumns = gridLines
 		gameBox.style.gridTemplateRows = gridLines
+
+		let tokenSize = 200
+		gameBox.style.height = (tokenSize * size) + (2 * size) + "px"
 	}
 	buildGrid(size)
 
@@ -91,10 +94,11 @@ function main() {
 
 		clueElement.classList.add("clue")
 
-		let gridLines = ""
+		let gridLinesX = ""
+		let gridLinesY = ""
 
 		for (let x = 0; x < clue.length; x++) {
-			gridLines += "auto "
+			gridLinesX += "auto "
 
 			for (let y = 0; y < clue[x].length; y++) {
 				let token = document.createElement("div")
@@ -103,12 +107,21 @@ function main() {
 				token.textContent = clue[x][y]
 
 				clueElement.append(token)
+
+				// only the first time so we don't add all the rows together into one massive grid
+				if (x === 0) {
+					gridLinesY += "auto "
+				}
 			}
 		}
 
 		// set the grid of the parent based of how many lines there are, which is just equal to size
-		clueElement.style.gridTemplateColumns = gridLines
-		clueElement.style.gridTemplateRows = gridLines		
+		clueElement.style.gridTemplateColumns = gridLinesX
+		clueElement.style.gridTemplateRows = gridLinesY
+		
+		let tokenSize = 100
+		clueElement.style.width = (tokenSize * clue.length) + "px"
+		clueElement.style.height = (tokenSize * clue[0].length) + "px"
 
 		document.querySelector("#clues").append(clueElement)
 	}

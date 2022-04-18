@@ -19,6 +19,44 @@ function generatePuzzle(size, tokenList) {
 	return puzzle
 }
 
+// function for generating an empty clue with a selectable size
+function getNewEmptyClue(height, width) {
+	let clue = []
+
+	for (let x = 0; x < height; x++) {
+		let row = []
+		for (let y = 0; y < width; y++) {
+			row.push('')
+		}
+		clue.push(row)
+	}
+
+	return clue
+}
+
+// function to generate clues
+// returns an array of clues
+// difficulty should be a positive integer, the lower the easier
+function generateClues(puzzle, difficulty) {
+
+	let clueArray = []
+	
+	// start with solved puzzle
+	// every loop, remove one piece of information, making a new state
+	// this new state must be able to be solved into the previous state
+	
+	clueArray.push(getNewEmptyClue(1, 3))
+	clueArray.push(getNewEmptyClue(3, 1))
+	clueArray.push(getNewEmptyClue(2, 2))
+	clueArray.push(getNewEmptyClue(4, 2))
+
+
+	// isSolvable(clueArray, puzzle)
+	return clueArray
+}
+
+// old clue generator and checker
+/*
 // function to generate clues
 // returns an array of clues
 // difficulty should be a positive integer, the lower the easier
@@ -127,7 +165,9 @@ function generateClues(puzzle, difficulty) {
 	// isSolvable(clueArray, puzzle)
 	return clueArray
 }
+*/
 
+/*
 // a function to check that the puzzle is solvable with the clues that are given
 function isSolvable(clueArray, puzzle) {
 	let solvedPuzzle = []
@@ -226,3 +266,4 @@ function isSolvable(clueArray, puzzle) {
 		console.log("Could not solve puzzle")
 	}
 }
+*/
