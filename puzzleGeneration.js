@@ -50,10 +50,43 @@ function generateClues(puzzle, difficulty) {
 	}
 	tokens = shuffle(tokens)
 
-	// iterate through the tokens, skipping the first one to ensure exactly 1 unsolved square
-	for (let i = 1; i < tokens.length; i++) {
+	let seenLetters = []
+	let seenNumbers = []
+	let oneBlank = false
+	// iterate through the tokens
+	for (let i = 0; i < tokens.length; i++) {
 		let x = tokens[i][0]
 		let y = tokens[i][1]
+		
+		// skip the number and letter the first time we see it
+		let solution = puzzle[x][y]
+
+		// track the letter
+		let skipLetter = false
+		if (!seenLetters.includes(solution[0])) {
+			seenLetters.push(solution[0])
+			skipLetter = true
+		}
+
+		// track the number
+		let skipNumber = false
+		if (!seenNumbers.includes(solution[1])) {
+			seenNumbers.push(solution[1])
+			skipNumber = true
+		}
+
+		// if we're skipping both, there's no need to run any more code on this pass
+		if (skipLetter && skipNumber) {
+			console.log("Skip both")
+			// if we already had an empty square
+			if (oneBlank) {
+				skipNumber = false
+				seenNumbers.pop()
+			} else {
+				oneBlank = true
+				continue
+			}
+		}
 
 		let clue1
 		let clue2
@@ -71,6 +104,7 @@ function generateClues(puzzle, difficulty) {
 				}
 			}
 
+			// assign the clues
 			clue1 = clueArray[num1]
 			clue2 = clueArray[num2]
 
@@ -82,12 +116,15 @@ function generateClues(puzzle, difficulty) {
 		}
 
 		// add the solution to the 2 clues
-		let solution = puzzle[x][y]
-		clue1[x][y] = solution[0] + clue1[x][y]
-		clue2[x][y] = clue2[x][y] + solution[1] + ""
+		if (!skipLetter) {
+			clue1[x][y] = solution[0] + clue1[x][y]
+		}
+		if (!skipNumber) {
+			clue2[x][y] = clue2[x][y] + solution[1] + ""
+		}
 	}
 
-	isSolvable(clueArray, puzzle)
+	// isSolvable(clueArray, puzzle)
 	return clueArray
 }
 
