@@ -11,7 +11,7 @@ const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 function main() {
 
 	const size = Number.parseInt(window.prompt("Grid size?"))
-	// const clueCount = Number.parseInt(window.prompt("Clue count?"))
+	const difficulty = Number.parseInt(window.prompt("Difficulty?"))
 	const gridSquares = []
 
 	// build the game grid
@@ -86,7 +86,7 @@ function main() {
 	buildTokens(tokenList)
 
 	const puzzle = generatePuzzle(size, tokenList)
-	console.log(puzzle)
+	// console.log(puzzle)
 	
 	// function to make the clues on the webpage
 	function buildClue(clue) {
@@ -101,6 +101,7 @@ function main() {
 			gridLinesX += "auto "
 
 			for (let y = 0; y < clue[x].length; y++) {
+				// console.log(`(${x}, ${y}) ${clue[x][y]}`)
 				let token = document.createElement("div")
 				
 				token.classList.add("clueToken")
@@ -116,17 +117,17 @@ function main() {
 		}
 
 		// set the grid of the parent based of how many lines there are, which is just equal to size
-		clueElement.style.gridTemplateColumns = gridLinesX
-		clueElement.style.gridTemplateRows = gridLinesY
+		clueElement.style.gridTemplateColumns = gridLinesY
+		clueElement.style.gridTemplateRows = gridLinesX
 		
 		let tokenSize = 100
-		clueElement.style.width = (tokenSize * clue.length) + "px"
-		clueElement.style.height = (tokenSize * clue[0].length) + "px"
+		clueElement.style.width = (tokenSize * clue[0].length) + "px"
+		clueElement.style.height = (tokenSize * clue.length) + "px"
 
 		document.querySelector("#clues").append(clueElement)
 	}
 
-	let clues = generateClues(puzzle, 2)
+	let clues = generateClues(puzzle, difficulty)
 	for (let i = 0; i < clues.length; i++) {
 		buildClue(clues[i])
 	}

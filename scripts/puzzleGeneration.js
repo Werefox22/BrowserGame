@@ -19,6 +19,48 @@ function generatePuzzle(size, tokenList) {
 	return puzzle
 }
 
+// function to generate clues
+// returns an array of clues
+// difficulty should be a positive integer, the lower the easier
+function generateClues(puzzle, difficulty) {
+
+	let clueArray = []
+	
+	// start with solved puzzle
+	// every loop, remove one piece of information, making a new state
+	// this new state must be able to be solved into the previous state
+	
+	// start with the solved puzzle
+	clueArray.push(puzzle)
+	for (let i = 0; i <= difficulty; i++) {
+
+		let pendingClues = []
+		// every loop, iterate over every clue and add a step back
+		// for now let's only have clue bisection
+		for (let ii = 0; ii < clueArray.length; ii++) {
+			// take the clue and seperate it into two seperate, smaller clues
+			let clue = clueArray[ii]
+
+			if (clue.length >= 2) {
+		
+				let half = Math.ceil(clue.length / 2)
+	
+				// make the new clues
+				let clue1 = bisectClue(clue, 0, half, 0, clue[0].length)
+				let clue2 = bisectClue(clue, half - 1, clue.length, 0, clue[0].length)
+	
+				// push the new clues
+				clueArray[ii] = clue1;
+				pendingClues.push(clue2)
+			}
+		}
+
+		pendingClues.forEach(x => clueArray.push(x))
+	}
+
+	return clueArray
+}
+
 // function for generating an empty clue with a selectable size
 function getNewEmptyClue(height, width) {
 	let clue = []
@@ -34,26 +76,24 @@ function getNewEmptyClue(height, width) {
 	return clue
 }
 
-// function to generate clues
-// returns an array of clues
-// difficulty should be a positive integer, the lower the easier
-function generateClues(puzzle, difficulty) {
+function bisectClue(clue, startX, endX, startY, endY) {
+	let bisClue = []
 
-	let clueArray = []
-	
-	// start with solved puzzle
-	// every loop, remove one piece of information, making a new state
-	// this new state must be able to be solved into the previous state
-	
-	clueArray.push(getNewEmptyClue(1, 3))
-	clueArray.push(getNewEmptyClue(3, 1))
-	clueArray.push(getNewEmptyClue(2, 2))
-	clueArray.push(getNewEmptyClue(4, 2))
+	for (let x = startX; x < endX; x++) {
+		let row = []
+		for (let y = startY; y < endY; y++) {
+			row.push(clue[x][y])
+		}
+		bisClue.push(row)
+	}
 
+	console.log(`(${startX}-${endX}, ${startY}-${endY})`)
+	console.log(clue)
+	console.log(bisClue)
 
-	// isSolvable(clueArray, puzzle)
-	return clueArray
+	return bisClue
 }
+
 
 // old clue generator and checker
 /*
