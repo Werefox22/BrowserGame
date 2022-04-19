@@ -32,8 +32,9 @@ function generateClues(puzzle, difficulty) {
 	
 	// start with the solved puzzle
 	clueArray.push(puzzle)
+	console.log(clueArray)
 	for (let i = 0; i <= difficulty; i++) {
-
+		
 		let pendingClues = []
 		// every loop, iterate over every clue and add a step back
 		// for now let's only have clue bisection
@@ -41,13 +42,31 @@ function generateClues(puzzle, difficulty) {
 			// take the clue and seperate it into two seperate, smaller clues
 			let clue = clueArray[ii]
 
-			if (clue.length >= 2) {
+			// if the clue is more than 2 tokens tall
+			if (clue.length > 2) {
 		
-				let half = Math.ceil(clue.length / 2)
+				// get the halfway point
+				let halfCeil = Math.ceil(clue.length / 2)
+				let halfFloor = Math.floor(clue.length / 2)
 	
 				// make the new clues
-				let clue1 = bisectClue(clue, 0, half, 0, clue[0].length)
-				let clue2 = bisectClue(clue, half - 1, clue.length, 0, clue[0].length)
+				let clue1 = bisectClue(clue, 0, halfCeil, 0, clue[0].length)
+				let clue2 = bisectClue(clue, halfFloor, clue.length, 0, clue[0].length)
+	
+				// push the new clues
+				clueArray[ii] = clue1;
+				pendingClues.push(clue2)
+			}
+			// if the clue is more than 2 tokens wide
+			else if (clue[0].length > 2) {
+
+				// get the halfway point
+				let halfCeil = Math.ceil(clue[0].length / 2) 
+				let halfFloor = Math.floor(clue[0].length / 2) 
+				
+				// make the new clues
+				let clue1 = bisectClue(clue, 0, clue.length, 0, halfCeil)
+				let clue2 = bisectClue(clue, 0, clue.length, halfFloor, clue[0].length)
 	
 				// push the new clues
 				clueArray[ii] = clue1;
@@ -56,9 +75,11 @@ function generateClues(puzzle, difficulty) {
 		}
 
 		pendingClues.forEach(x => clueArray.push(x))
+
+		console.log(clueArray)
 	}
 
-	return clueArray
+	return shuffle(clueArray)
 }
 
 // function for generating an empty clue with a selectable size
@@ -87,9 +108,9 @@ function bisectClue(clue, startX, endX, startY, endY) {
 		bisClue.push(row)
 	}
 
-	console.log(`(${startX}-${endX}, ${startY}-${endY})`)
-	console.log(clue)
-	console.log(bisClue)
+	// console.log(`(${startX}-${endX}, ${startY}-${endY})`)
+	// console.log(clue)
+	// console.log(bisClue)
 
 	return bisClue
 }
