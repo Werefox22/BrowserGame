@@ -10,12 +10,9 @@ body {
 main {
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 
 	margin: 1rem;
-}
-
-#clues {
-	width: 50%;
 }
 
 #box {
@@ -33,7 +30,10 @@ main {
 }
 
 #clues {
+	width: 50%;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	flex-wrap: wrap;
 	@include utilities.border;
 }
