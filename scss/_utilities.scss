@@ -15,10 +15,10 @@
 	@if $thick == true {
 		$size: 5px;
 	}
-	border: $size solid config.$secondary-color;
+	border: $size solid config.$border-color;
 }
 
-@mixin token {
+@mixin token ($hoverable: true) {
 	border-radius: 10%;
 	font-size: 4em;
 
@@ -26,4 +26,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@if $hoverable == true {
+		@include hoverable(config.$token-color)
+	}
+	@else {
+		background-color: config.$token-color;
+	}
 }

@@ -49,10 +49,8 @@ main {
 	box-sizing: border-box;
 	width: 100px;
 	margin: auto;
-	
-	background-color: cfg.$primary-color;
 
-	@include utilities.token;
+	@include utilities.token(false);
 	@include utilities.border($thick:true);
 }
 
@@ -71,7 +69,6 @@ main {
 	min-width: 100px;
 
 	@include utilities.border($thick: true);
-	@include utilities.hoverable(cfg.$primary-color);
 	@include utilities.token;
 }
 
