@@ -1,8 +1,17 @@
 @use "sass:color";
+@use "./config";
 
 @mixin hoverable($color, $percent) {
 	background-color: $color;
 	&:hover {
 		background-color: color.scale($color, $lightness: $percent);
 	}
+}
+
+@mixin border($thick:false) {
+	$size: 1px;
+	@if $thick == true {
+		$size: 5px;
+	}
+	border: $size solid config.$secondary-color;
 }
