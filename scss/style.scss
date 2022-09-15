@@ -19,7 +19,6 @@ main {
 }
 
 #box {
-	aspect-ratio: 1 / 1;
 	display: grid;
 	
 	@include utilities.border;
@@ -29,7 +28,6 @@ main {
 	width: 200px;
 	margin: auto;
 
-	@include utilities.square;
 	@include utilities.hoverable(cfg.$primary-color);
 	@include utilities.border;
 }
@@ -45,7 +43,6 @@ main {
 	margin: 1rem;
 
 	display: grid;
-	@include utilities.square;
 }
 
 .clueToken {
@@ -54,9 +51,8 @@ main {
 	margin: auto;
 	
 	background-color: cfg.$primary-color;
-	
+
 	@include utilities.token;
-	@include utilities.square;
 	@include utilities.border($thick:true);
 }
 
@@ -74,7 +70,6 @@ main {
 .token {
 	min-width: 100px;
 
-	@include utilities.square;
 	@include utilities.border($thick: true);
 	@include utilities.hoverable(cfg.$primary-color);
 	@include utilities.token;

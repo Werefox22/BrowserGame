@@ -9,15 +9,13 @@
 }
 
 @mixin border($thick:false) {
+	aspect-ratio: 1/1;
+
 	$size: 1px;
 	@if $thick == true {
 		$size: 5px;
 	}
 	border: $size solid config.$secondary-color;
-}
-
-@mixin square {
-	aspect-ratio: 1/1;
 }
 
 @mixin token {
