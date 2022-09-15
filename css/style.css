@@ -1,5 +1,33 @@
 body {
   background-color: white;
+  margin: 1em;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+#clues {
+  width: 50%;
+}
+
+#box {
+  aspect-ratio: 1/1;
+  display: grid;
+  border: 1px solid #4f3130;
+}
+
+.grid {
+  width: 200px;
+  margin: auto;
+  aspect-ratio: 1/1;
+  border: 1px solid #4f3130;
+  background-color: #a1e8af;
+}
+.grid:hover {
+  background-color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
