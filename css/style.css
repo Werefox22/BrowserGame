@@ -50,9 +50,38 @@ main {
   background-color: #a1e8af;
   border-radius: 10%;
   text-align: center;
-  font-size: 4rem;
+  font-size: 4em;
   aspect-ratio: 1/1;
   border: 5px solid #4f3130;
+}
+
+#token-tray {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-height: 100px;
+  padding: 25px;
+  background-color: #4f3130;
+}
+#token-tray:hover {
+  background-color: #965d5b;
+}
+
+.token {
+  min-width: 100px;
+  aspect-ratio: 1/1;
+  border: 5px solid #4f3130;
+  background-color: #a1e8af;
+  border-radius: 10%;
+  text-align: center;
+  font-size: 4em;
+}
+.token:hover {
+  background-color: #bdefc7;
+}
+
+.dragging {
+  position: absolute;
 }
 
 /*# sourceMappingURL=style.css.map */

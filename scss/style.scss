@@ -30,7 +30,7 @@ main {
 	margin: auto;
 
 	@include utilities.square;
-	@include utilities.hoverable(cfg.$primary-color, 30%);
+	@include utilities.hoverable(cfg.$primary-color);
 	@include utilities.border;
 }
 
@@ -54,11 +54,32 @@ main {
 	margin: auto;
 	
 	background-color: cfg.$primary-color;
-	border-radius: 10%;
-
-	text-align: center;
-	font-size: 4rem;
-
+	
+	@include utilities.token;
 	@include utilities.square;
 	@include utilities.border($thick:true);
+}
+
+#token-tray {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+
+	min-height: 100px;
+	padding: 25px;
+
+	@include utilities.hoverable(cfg.$secondary-color)
+}
+
+.token {
+	min-width: 100px;
+
+	@include utilities.square;
+	@include utilities.border($thick: true);
+	@include utilities.hoverable(cfg.$primary-color);
+	@include utilities.token;
+}
+
+.dragging {
+	position: absolute;
 }

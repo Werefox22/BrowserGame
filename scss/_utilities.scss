@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "./config";
 
-@mixin hoverable($color, $percent) {
+@mixin hoverable($color, $percent:30%) {
 	background-color: $color;
 	&:hover {
 		background-color: color.scale($color, $lightness: $percent);
@@ -18,4 +18,10 @@
 
 @mixin square {
 	aspect-ratio: 1/1;
+}
+
+@mixin token {
+	border-radius: 10%;
+	text-align: center;
+	font-size: 4em;
 }
