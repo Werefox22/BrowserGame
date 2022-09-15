@@ -1,4 +1,6 @@
+@use "sass:color";
 @use "./config" as cfg;
+@use "./utilities";
 
 body {
 	background-color: cfg.$background-color;
@@ -28,9 +30,6 @@ main {
 	aspect-ratio: 1 / 1;
 	border: 1px solid cfg.$secondary-color;
 
-	background-color: cfg.$primary-color;
-
-	&:hover {
-		background-color: cfg.$background-color;
-	}
+	@include utilities.hoverable(cfg.$primary-color, 30%)
 }
+
