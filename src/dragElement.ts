@@ -44,7 +44,7 @@ function dragElement(element: HTMLElement) {
 		document.onmousemove = null;
 
 		// tell the script we're not holding a token anymore
-		currentSelectedToken = null
+		// currentSelectedToken = null
 
 		// remove absolute positioning
 		element.classList.remove('dragging')

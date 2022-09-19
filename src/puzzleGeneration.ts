@@ -1,5 +1,5 @@
 // function to build the puzzle layout
-function generatePuzzle(size, tokenList) {
+function generatePuzzle(size: Number, tokenList: Array<string>): Array<Array<number>> {
 	// get tokens
 	let tokens = shuffle(tokenList)
 
@@ -22,9 +22,9 @@ function generatePuzzle(size, tokenList) {
 // function to generate clues
 // returns an array of clues
 // difficulty should be a positive integer, the lower the easier
-function generateClues(puzzle, difficulty) {
+function generateClues(puzzle: Array<Array<number>>, difficulty: number) {
 
-	let clueArray = []
+	let clueArray: Array<Array<number>> = []
 	
 	// start with solved puzzle
 	// every loop, remove one piece of information, making a new state
@@ -39,9 +39,9 @@ function generateClues(puzzle, difficulty) {
 		let pendingClues = []
 		// every loop, iterate over every clue and add a step back
 		// for now let's only have clue bisection
-		for (let ii = 0; ii < clueArray.length; ii++) {
+		for (let j = 0; j < clueArray.length; j++) {
 			// take the clue and seperate it into two seperate, smaller clues
-			let clue = clueArray[ii]
+			let clue: Array<Array<number>> = clueArray[j]
 
 			// if the clue is more than 2 tokens tall
 			if (clue.length > 2) {
@@ -55,7 +55,7 @@ function generateClues(puzzle, difficulty) {
 				let clue2 = bisectClue(clue, halfFloor, clue.length, 0, clue[0].length)
 				
 				// push the new clues
-				clueArray[ii] = clue1;
+				clueArray[j] = clue1;
 				pendingClues.push(clue2)
 			}
 			// if the clue is more than 2 tokens wide
@@ -70,7 +70,7 @@ function generateClues(puzzle, difficulty) {
 				let clue2 = bisectClue(clue, 0, clue.length, halfFloor, clue[0].length)
 	
 				// push the new clues
-				clueArray[ii] = clue1;
+				clueArray[j] = clue1;
 				pendingClues.push(clue2)
 			}
 		}
@@ -84,7 +84,7 @@ function generateClues(puzzle, difficulty) {
 }
 
 // function for generating an empty clue with a selectable size
-function getNewEmptyClue(height, width) {
+function getNewEmptyClue(height: number, width: number) {
 	let clue = []
 
 	for (let x = 0; x < height; x++) {
@@ -98,7 +98,7 @@ function getNewEmptyClue(height, width) {
 	return clue
 }
 
-function bisectClue(clue, startX, endX, startY, endY) {
+function bisectClue(clue: Array<Array<number>>, startX: number, endX: number, startY: number, endY: number): Array<Array<number>> {
 	let bisClue = []
 
 	for (let x = startX; x < endX; x++) {

@@ -5,19 +5,31 @@
 // the player solves the puzzle using the clues and places the tokens in the correct positions
 // the game checks that all of the tokens are correct
 
-var currentSelectedToken = null
+var currentSelectedToken: HTMLElement
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function main() {
+	var size: number = 0
+	let sizeInput = window.prompt("Grid size?")
 
-	const size = Number.parseInt(window.prompt("Grid size?"))
-	const difficulty = Number.parseInt(window.prompt("Difficulty?"))
-	const gridSquares = []
+	if (sizeInput) {
+		size = Number.parseInt(sizeInput)
+	}
+
+	var difficulty = 0
+	let difficultyInput = window.prompt("Difficulty?")
+	
+	if (difficultyInput) {
+		difficulty = Number.parseInt(difficultyInput)
+	}
+
+	const gridSquares = Array<Element>
 
 	// build the game grid
-	function buildGrid(size) {
+	function buildGrid(size: number) {
 		// get the parent grid
-		const gameBox = document.querySelector("#box")
+
+		const gameBox: HTMLElement = document.querySelector("#box")!
 
 		let gridLines = ""
 
@@ -47,11 +59,11 @@ function main() {
 	}
 	buildGrid(size)
 
-	const tokenTray = document.querySelector("#token-tray")
+	const tokenTray = document.querySelector("#token-tray")!
 	tokenTray.addEventListener('mouseup', () => moveTokenToGrid(currentSelectedToken, tokenTray))
 
 	// function for building a list of tokens
-	function getTokenList(size) {
+	function getTokenList(size: Number): Array<string> {
 		// list alphabet to reference in the token names
 		// const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -69,8 +81,9 @@ function main() {
 	const tokenList = getTokenList(size)
 
 	// function to build the tray of tokens
-	function buildTokens(tokenList) {
-		const tokenHolder = document.querySelector("#token-tray")
+	function buildTokens(tokenList: Array<string>) {
+		// Can't be null as it's build in to the html
+		const tokenHolder = document.querySelector("#token-tray")!
 
 		for (let i = 0; i < tokenList.length; i++) {
 			let token = document.createElement("div")
@@ -124,7 +137,7 @@ function main() {
 		clueElement.style.width = (tokenSize * clue[0].length) + "px"
 		clueElement.style.height = (tokenSize * clue.length) + "px"
 
-		document.querySelector("#clues").append(clueElement)
+		document.querySelector("#clues")!.append(clueElement)
 	}
 
 	let clues = generateClues(puzzle, difficulty)
@@ -133,7 +146,7 @@ function main() {
 	}
 
 	// function to handle token movement
-	function moveTokenToGrid(token, grid) {
+	function moveTokenToGrid(token: HTMLElement, grid: HTMLElement) {
 		// if there's a token to move AND it's either not a grid (it's the token tray) OR it's empty
 		if (token != null && (!grid.classList.contains("grid") || grid.childNodes.length === 0)) {
 			grid.append(token)
@@ -173,7 +186,7 @@ function main() {
 }
 
 // shuffle function sourced from https://bost.ocks.org/mike/shuffle/
-function shuffle(array) {
+function shuffle(array: Array<any>) {
 	var m = array.length, t, i;
   
 	// While there remain elements to shuffle…
