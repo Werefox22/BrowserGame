@@ -1,11 +1,11 @@
 // original script sourced from https://www.w3schools.com/howto/howto_js_draggable.asp
 const dragOffset = [10, 10]
 
-function dragElement(element) {
+function dragElement(element: HTMLElement) {
   	var mouseX = 0, mouseY = 0;
   	element.onmousedown = dragMouseDown;
 
-	function dragMouseDown(e) {
+	function dragMouseDown(e: MouseEvent) {
 		e = e || window.event;
 		e.preventDefault();
 
@@ -25,7 +25,7 @@ function dragElement(element) {
 		elementDrag(e)
 	}
 
-  	function elementDrag(e) {
+  	function elementDrag(e: MouseEvent) {
 		e = e || window.event;
 		e.preventDefault();
 
